@@ -8,6 +8,8 @@ var cors = require("cors");
 const cookieParser = require("cookie-parser")
 const errorHandler = require("./middleware/error");
 
+// import routes
+const authRoutes = require('./routes/authRoutes');
 //database connection
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
@@ -27,6 +29,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(cors());
+
+//ROUTES
+// app.get('/',(req,res)=>{
+//     res.send("started")
+// })
+app.use("/api", authRoutes);
 
 // error middleware
 app.use(errorHandler);
