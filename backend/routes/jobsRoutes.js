@@ -5,6 +5,7 @@ const {
   singleJob,
   updateJob,
   showJobs,
+  deleteJob
 } = require("../controllers/jobsController");
 const { isAuthenticated, isAdmin } = require("../middleware/auth");
 
@@ -18,5 +19,6 @@ router.get("/job/:id", singleJob);
 router.put("/job/update/:job_id", isAuthenticated, isAdmin, updateJob);
 // /api/jobs/show
 router.get("/jobs/show", showJobs);
-
+// /api/job/delete
+router.delete("/job/delete/:job_id", isAuthenticated, isAdmin, deleteJob);
 module.exports = router;

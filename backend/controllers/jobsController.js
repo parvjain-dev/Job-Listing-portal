@@ -101,6 +101,8 @@ exports.showJobs = async (req, res, next) => {
       location: locationFilter,
     })
       .sort({ createdAt: -1 })
+      .populate("jobType", "jobTypeName")
+      .populate("user", "firstName")
       .skip(pageSize * (page - 1))
       .limit(pageSize);
     res.status(200).json({
@@ -111,8 +113,23 @@ exports.showJobs = async (req, res, next) => {
       count,
       setUniqueLocation,
     });
-    
   } catch (error) {
     next(error);
+  }
+};
+
+//delete type
+exports.deleteJob = async (req, res, next) => {
+  try {
+    // console.log(job_id);
+    const job = await Job.findByIdAndRemove(req.params.job_id);
+    
+    res.status(200).json({
+      success: true,
+      message: "Job deleted",
+    });
+  } catch (error) {
+    console.log(error);
+    next(new ErrorResponse("server error", 500));
   }
 };

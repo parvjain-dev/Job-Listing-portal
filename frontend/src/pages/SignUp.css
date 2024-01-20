@@ -1,0 +1,15 @@
+.form-container{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.firstName{
+    margin: 35px 0 35px 0;
+    height: 12px;
+    
+}
+#exampleInputEmail1{
+    height: 30px;
+    width: 100%;
+}

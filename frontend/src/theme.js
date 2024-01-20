@@ -8,7 +8,7 @@ export const theme = createTheme({
     },
     secondary: {
       main: "#ed7470",
-      midNightRed: "#730400",
+      midNightRed: "#b00802",
     },
   },
 });
